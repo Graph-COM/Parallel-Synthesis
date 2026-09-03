@@ -231,13 +231,10 @@ docs/                Data, evaluation, and training guides
 ## Citation
 
 ```bibtex
-@article{liu2026parallel_synthesis,
+@article{liu2026towards,
   title={Towards Direct Latent-Space Synthesis for Parallel Branches in LLM-Agent Workflows},
   author={Liu, Shikun and Li, Mufei and Fu, Dongqi and Wang, Haoyu and Xia, Yinglong and Li, Hong and Yan, Hong and Li, Pan},
   journal={arXiv preprint arXiv:2606.14672},
   year={2026}
 }
 ```
-
-Code is licensed under the [Apache License 2.0](LICENSE). Datasets, models, and
-external baselines remain subject to their own licenses.
