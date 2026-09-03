@@ -1,0 +1,41 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+.idea/
+.vscode/
+
+# Credentials and machine-local configuration.
+.env
+.env.*
+!.env.example
+
+# Large or generated artifacts are released separately.
+checkpoints/
+data/**/raw/
+data/**/processed/
+!data/browsecomp-textmas/processed/
+!data/browsecomp-textmas/processed/filtered_train.jsonl.gz
+*.jsonl
+*.json.gz
+*.parquet
+*.safetensors
+*.pt
+
+# Evaluation and training outputs.
+example_logs/
+eval_logs/
+sanity_logs/
+results/
+outputs/
+train.log
+nohup.out
+
+# MARBLE's local database state.
+parallel_synthesis/marble_db/db_env_docker/postgres_data/

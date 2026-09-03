@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "parallel-synthesis"
+version = "0.1.0"
+description = "KV-cache-based parallel multi-agent synthesis"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [{name = "Parallel Synthesis authors"}]
+dependencies = [
+  "accelerate==1.12.0",
+  "datasets==4.5.0",
+  "huggingface-hub==0.36.2",
+  "numpy==2.2.6",
+  "peft==0.18.1",
+  "safetensors==0.7.0",
+  "torch==2.9.1",
+  "tqdm==4.67.1",
+  "transformers==4.57.6",
+]
+
+[project.urls]
+Repository = "https://github.com/Graph-COM/Parallel-Synthesis"
+Paper = "https://arxiv.org/abs/2606.14672"
+Checkpoint = "https://huggingface.co/Graph-COM/Parallel-Synthesis-qwen3-14B"
+
+[project.scripts]
+parallel-synthesis-train = "parallel_synthesis.cli.train_mixed_tasks:main"
+parallel-synthesis-single = "parallel_synthesis.cli.post_eval_parallel_kv:main"
+parallel-synthesis-gaia = "parallel_synthesis.cli.run_gaia_eval:main"
+parallel-synthesis-gaia-sanity = "parallel_synthesis.cli.run_gaia_sanity_eval:main"
+parallel-synthesis-marble = "parallel_synthesis.cli.run_marble_db_eval:main"
+parallel-synthesis-text-baseline = "parallel_synthesis.cli.baseline:main"
+
+[tool.setuptools.packages.find]
+include = ["parallel_synthesis*"]
+
+[tool.setuptools.package-data]
+"parallel_synthesis.marble_db" = ["db_env_docker/*.yml", "db_env_docker/anomaly_trigger/*.py"]

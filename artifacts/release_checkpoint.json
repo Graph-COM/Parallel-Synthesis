@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "artifact_name": "merged_train_fixed_parallel_kv_browsecomp_SFT_valid_Qwen-Qwen3-14B_050749",
+  "training_data_manifest": "artifacts/training_data.json",
+  "huggingface_repo_id": "Graph-COM/Parallel-Synthesis-qwen3-14B",
+  "base_model": "Qwen/Qwen3-14B",
+  "base_model_revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+  "format": "parallel_synthesis_trainable_components",
+  "components": {
+    "cache_mapper.pt": {
+      "bytes": 3599,
+      "sha256": "75648f78e856cb56a8522f692005e22a39f1573041b754cbc651e629eb48911a"
+    },
+    "judger_lora/adapter_config.json": {
+      "bytes": 995,
+      "sha256": "b3a5a80af2c9454faa9dd350a79fff391fe994b10941c147edeaedf4802d21a0"
+    },
+    "judger_lora/adapter_model.safetensors": {
+      "bytes": 3190110480,
+      "sha256": "25f09176222bd3286c997b71e037d6e831526e2f56959145a46ab25093bcf866"
+    }
+  },
+  "mapper": {
+    "hidden_dim": 32,
+    "metadata_features": "both",
+    "source": "general_training_early",
+    "source_sha256": "75648f78e856cb56a8522f692005e22a39f1573041b754cbc651e629eb48911a"
+  },
+  "judger_lora": {
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.0,
+    "adapter_embedding_vocab_size": 151669,
+    "base_model_padded_vocab_size": 151936,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj"
+    ]
+  },
+  "lineage": {
+    "general_training_early": {
+      "global_step": 95060,
+      "role": "final merge checkpoint B and cache-mapper source"
+    },
+    "general_training_late": {
+      "global_step": 176175,
+      "role": "initialization for BrowseComp SFT"
+    },
+    "browsecomp_sft": {
+      "input_checkpoint": "general_training_late",
+      "dataset_rows": 1266,
+      "dataset_sha256": "be052a666b9cd148f6f8c88b1df7ec9107139460f7d7042f1cc7102e2553c832",
+      "global_steps": 302,
+      "optimizer_steps": 166
+    },
+    "merge": {
+      "checkpoint_a": "browsecomp_sft",
+      "checkpoint_b": "general_training_early",
+      "weight_a": 0.5,
+      "weight_b": 0.5,
+      "lora_merge_mode": "weighted_adapter_tensor_average",
+      "cache_mapper_source": "general_training_early"
+    }
+  },
+  "training_datasets": {
+    "browsecomp_cache_sft": {
+      "path_hint": "data/browsecomp-textmas/processed/train.jsonl",
+      "rows": 1266,
+      "bytes": 205209043,
+      "sha256": "be052a666b9cd148f6f8c88b1df7ec9107139460f7d7042f1cc7102e2553c832"
+    }
+  },
+  "validated_environment": {
+    "python": "3.10.19",
+    "torch": "2.9.1+cu128",
+    "transformers": "4.57.6",
+    "peft": "0.18.1",
+    "datasets": "4.5.0",
+    "huggingface_hub": "0.36.2",
+    "attention_backend": "sdpa"
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "general_phase": [
+    {
+      "task": "wildchat",
+      "path": "data/wildchat/processed/train_all_lang_multi_turn_min3.jsonl",
+      "rows": 206788,
+      "bytes": 13660357560,
+      "sha256": "f15e36d32e0059f6b93119c8f4612a434727f48cbb70dfcefa0027114bca099c",
+      "source_dataset": "allenai/WildChat-1M",
+      "source_revision": "7d6490e462285cf85d91eabea0f9a954fbddcd1f",
+      "processor": "data/wildchat/process_wildchat.py"
+    },
+    {
+      "task": "ultrachat",
+      "path": "data/ultrachat/processed/train_sft_multi_turn_min3.jsonl",
+      "rows": 140520,
+      "bytes": 4545744046,
+      "sha256": "8540a36a3cc5476150285a84655a393b0ad02e5a676f79c85022769cf7e72b51",
+      "source_dataset": "HuggingFaceH4/ultrachat_200k",
+      "source_revision": "8049631c405ae6576f93f445c6b8166f76f5505a",
+      "processor": "data/ultrachat/process_ultrachat.py"
+    },
+    {
+      "task": "lmsys_chat",
+      "path": "data/lmsys-chat/processed/train_all_lang_multi_turn_min3.jsonl",
+      "rows": 175635,
+      "bytes": 7618870153,
+      "sha256": "9f16624f42572141772b2d5c466ebcadd7f653b0c949d9855bcbcb9bc7d47eca",
+      "source_dataset": "lmsys/lmsys-chat-1m",
+      "source_revision": "200748d9d3cddcc9d782887541057aca0b18c5da",
+      "processor": "data/lmsys-chat/process_lmsys_chat.py"
+    },
+    {
+      "task": "toucan_single_parallel",
+      "path": "data/toucan/processed/train_single_turn_parallel_tool_call_unified.jsonl",
+      "rows": 141717,
+      "bytes": 8534268387,
+      "sha256": "f8fdc41e562ddeb794dcfefbada19c115631838fd12e10e1c1eef56c20b0a297",
+      "source_dataset": "Agent-Ark/Toucan-1.5M",
+      "source_revision": "0df3cf37f2abefb380370cfb02eabea2a35ae782",
+      "source_configs": ["SFT", "Kimi-K2", "Qwen3"],
+      "processor": "data/toucan/process_toucan.py"
+    },
+    {
+      "task": "toucan_multi_parallel",
+      "path": "data/toucan/processed/train_multi_turn_parallel_tool_call.jsonl",
+      "rows": 1171,
+      "bytes": 57495030,
+      "sha256": "ad8f85acfcca4af6b8b4ce9cf7e927cedc1ab72ea7975ec98cde22b740507245",
+      "source_dataset": "Agent-Ark/Toucan-1.5M",
+      "source_revision": "0df3cf37f2abefb380370cfb02eabea2a35ae782",
+      "source_configs": ["SFT"],
+      "processor": "data/toucan/process_toucan.py"
+    },
+    {
+      "task": "dta_tool",
+      "path": "data/dta-tool/processed/train_parallel_function_calls.jsonl",
+      "rows": 14459,
+      "bytes": 910781993,
+      "sha256": "03c997facaf556d1a47d01592af5b935fd5481b9f8b134cb301833b98dcb70f3",
+      "source_dataset": "dongsheng/DTA-Tool",
+      "source_revision": "76e4d52f630aaba4721abd56a7666058664068c6",
+      "processor": "data/dta-tool/process_dta_tool.py"
+    },
+    {
+      "task": "flan",
+      "path": "data/flan/processed/train_in_context_examples.jsonl",
+      "rows": 33351,
+      "bytes": 359902340,
+      "sha256": "a3d32b7bf03c91d050214f55634d86e1bd63c92a96f4b5717d0e2f762a4255d9",
+      "source_dataset": "ai2-adapt-dev/flan_v2_converted",
+      "source_revision": "20f17e144dfdfe2d20f12f140ace5b95c31577c0",
+      "processor": "data/flan/process_flan.py"
+    },
+    {
+      "task": "2wiki_multihopqa",
+      "path": "data/2wiki-multihopqa/processed/train.jsonl",
+      "rows": 167254,
+      "bytes": 3437115599,
+      "sha256": "e913058b7ea13ae8ef8d7ea0ef0a25e1cec954b2aebd4a804508a4bff8979c64",
+      "source_dataset": "xanhho/2WikiMultihopQA",
+      "source_revision": "612bc5039a457880d9e7d84c3b0a4cf154b70e4f",
+      "processor": "data/2wiki-multihopqa/process_2wiki_multihopqa.py"
+    }
+  ],
+  "browsecomp_trajectory_sft": {
+    "release_checkpoint": {
+      "local_path": "data/browsecomp-textmas/processed/train.jsonl",
+      "rows": 1266,
+      "bytes": 205209043,
+      "sha256": "be052a666b9cd148f6f8c88b1df7ec9107139460f7d7042f1cc7102e2553c832",
+      "used_by_released_checkpoint": true,
+      "bundled": false
+    },
+    "filtered_variant": {
+      "local_path": "data/browsecomp-textmas/processed/filtered_train.jsonl.gz",
+      "rows": 1211,
+      "compression": "gzip",
+      "compressed_bytes": 33827874,
+      "compressed_sha256": "1b170a6e4354c7b5999e66671af4dc5e671a2ec984f0e7fda4ed4243fb7723f8",
+      "uncompressed_bytes": 194414797,
+      "uncompressed_sha256": "4abd4dd4eb314784c83eec46b0475cda77dcd4a88e4af9a133977ad3e1d6f222",
+      "source_uncompressed_sha256": "7c6b393b165c2d019aa966a7ba4c8a780a78824ba13da45148be7499c8e90fde",
+      "sanitization": "Redacted two expired S3 presigned-URL credential identifiers; duplicated fields produced four replacements.",
+      "used_by_released_checkpoint": false,
+      "bundled": true,
+      "note": "Format-filtered trajectory variant bundled for runnable training; not used by the release checkpoint."
+    }
+  }
+}

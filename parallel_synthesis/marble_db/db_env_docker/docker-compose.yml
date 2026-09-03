@@ -1,0 +1,36 @@
+services:
+  postgres_db:
+    image: postgres:15
+    restart: unless-stopped
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    environment:
+      POSTGRES_USER: "${POSTGRES_USER:-test}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:-Test123_456}"
+      POSTGRES_DB: "${POSTGRES_DB:-sysbench}"
+    command:
+      - postgres
+      - -c
+      - shared_preload_libraries=pg_stat_statements
+      - -c
+      - pg_stat_statements.track=all
+      - -c
+      - max_connections=200
+      - -c
+      - log_min_error_statement=info
+      - -c
+      - logging_collector=on
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U ${POSTGRES_USER:-test} -d ${POSTGRES_DB:-sysbench}",
+        ]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
